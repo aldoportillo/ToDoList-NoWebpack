@@ -1,3 +1,30 @@
 body {
     background-color: black;
+    color: beige;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container{
+    display: grid;
+    width: 100vw;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

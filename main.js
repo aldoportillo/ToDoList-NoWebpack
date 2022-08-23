@@ -28,6 +28,7 @@ const cardContainer = document.getElementById("card-container")
 
 const createCard = (arr) => {
     const card = document.createElement('div');
+    card.classList.add("card")
     const titleContent = document.createElement('h2');
     const descriptionContent = document.createElement('p');
     const dueDateContent = document.createElement('p');
@@ -48,11 +49,7 @@ const createCard = (arr) => {
 submitFormButton.addEventListener('click', () => {
     createToDo(document.querySelector("#title").value, document.querySelector('#description').value, document.querySelector('#dueDate').value, document.querySelector('#priority').value, document.querySelector('#checklist').value )
 
-    //cardContainer.append(createCard(toDoArr))
-
     const newCard = createCard(createToDo(document.querySelector("#title").value, document.querySelector('#description').value, document.querySelector('#dueDate').value, document.querySelector('#priority').value, document.querySelector('#checklist').value ))
-
-    console.log(newCard)
 
     cardContainer.appendChild(newCard)
     form.reset();

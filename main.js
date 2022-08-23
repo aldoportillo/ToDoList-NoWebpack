@@ -1,10 +1,10 @@
 let toDoArr = [];
 
-const titleContent = document.getElementById('title-h2');
-const descriptionContent = document.getElementById('description-p');
-const dueDateContent = document.getElementById('due-date-p');
-const priorityContent = document.getElementById('priority-p');
-const checkListContent = document.getElementById('checklist-p')
+// const titleContent = document.getElementById('title-h2');
+// const descriptionContent = document.getElementById('description-p');
+// const dueDateContent = document.getElementById('due-date-p');
+// const priorityContent = document.getElementById('priority-p');
+// const checkListContent = document.getElementById('checklist-p')
 
 const createToDo = (Title, Description, DueDate, Priority, CheckList) => {
     
@@ -24,17 +24,37 @@ createToDo("Train", "MMA", "Tomorrow", "Top Priority", "false")
  
 const form = document.querySelector("form");
 const submitFormButton = document.getElementById('s');
+const cardContainer = document.getElementById("card-container")
 
+const createCard = (arr) => {
+    const card = document.createElement('div');
+    const titleContent = document.createElement('h2');
+    const descriptionContent = document.createElement('p');
+    const dueDateContent = document.createElement('p');
+    const priorityContent = document.createElement('p');
+    const checkListContent = document.createElement('p');
+
+    card.append(titleContent, descriptionContent, dueDateContent, priorityContent, checkListContent);
+
+    titleContent.textContent = arr[arr.length - 1].Title
+    descriptionContent.textContent = arr[arr.length - 1].Description;
+    dueDateContent.textContent = arr[arr.length - 1].DueDate;
+    priorityContent.textContent = arr[arr.length - 1].Priority;
+    checkListContent.textContent = arr[arr.length - 1].CheckList;
+
+    return card
+}
 
 submitFormButton.addEventListener('click', () => {
     createToDo(document.querySelector("#title").value, document.querySelector('#description').value, document.querySelector('#dueDate').value, document.querySelector('#priority').value, document.querySelector('#checklist').value )
 
-    titleContent.textContent = toDoArr[toDoArr.length - 1].Title
-    descriptionContent.textContent = toDoArr[toDoArr.length - 1].Description;
-    dueDateContent.textContent = toDoArr[toDoArr.length - 1].DueDate;
-    priorityContent.textContent = toDoArr[toDoArr.length - 1].Priority;
-    checkListContent.textContent = toDoArr[toDoArr.length - 1].CheckList;
+    //cardContainer.append(createCard(toDoArr))
 
+    const newCard = createCard(createToDo(document.querySelector("#title").value, document.querySelector('#description').value, document.querySelector('#dueDate').value, document.querySelector('#priority').value, document.querySelector('#checklist').value ))
+
+    console.log(newCard)
+
+    cardContainer.appendChild(newCard)
     form.reset();
 })
 

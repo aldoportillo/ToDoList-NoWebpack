@@ -16,11 +16,11 @@ const createToDo = (Title, Description, DueDate, Priority, CheckList) => {
 
 
 
-createToDo("Homework", "To do list", "08/20/22", "low", "false");
+//createToDo("Homework", "To do list", "08/20/22", "low", "false");
 
-createToDo("Work", "Bartend", "Today", "Urgent", "false");
+//createToDo("Work", "Bartend", "Today", "Urgent", "false");
 
-createToDo("Train", "MMA", "Tomorrow", "Top Priority", "false")
+//createToDo("Train", "MMA", "Tomorrow", "Top Priority", "false")
  
 const form = document.querySelector("form");
 const submitFormButton = document.getElementById('s');
@@ -29,13 +29,23 @@ const cardContainer = document.getElementById("card-container")
 const createCard = (arr) => {
     const card = document.createElement('div');
     card.classList.add("card")
+    card.classList.add(arr.length)
+    card.setAttribute("id", arr.length)
+    const close = document.createElement('span');
+    close.textContent = "x"
+    close.classList.add('close')
+    close.addEventListener('click', () => {
+        console.log("hello world")
+        document.getElementById(arr.length).remove();
+    })
+    
     const titleContent = document.createElement('h2');
     const descriptionContent = document.createElement('p');
     const dueDateContent = document.createElement('p');
     const priorityContent = document.createElement('p');
     const checkListContent = document.createElement('p');
 
-    card.append(titleContent, descriptionContent, dueDateContent, priorityContent, checkListContent);
+    card.append(close, titleContent, descriptionContent, dueDateContent, priorityContent, checkListContent);
 
     titleContent.textContent = arr[arr.length - 1].Title
     descriptionContent.textContent = arr[arr.length - 1].Description;
@@ -47,7 +57,7 @@ const createCard = (arr) => {
 }
 
 submitFormButton.addEventListener('click', () => {
-    createToDo(document.querySelector("#title").value, document.querySelector('#description').value, document.querySelector('#dueDate').value, document.querySelector('#priority').value, document.querySelector('#checklist').value )
+    //createToDo(document.querySelector("#title").value, document.querySelector('#description').value, document.querySelector('#dueDate').value, document.querySelector('#priority').value, document.querySelector('#checklist').value )
 
     const newCard = createCard(createToDo(document.querySelector("#title").value, document.querySelector('#description').value, document.querySelector('#dueDate').value, document.querySelector('#priority').value, document.querySelector('#checklist').value ))
 

@@ -36,7 +36,7 @@ const createCard = (arr) => {
     close.classList.add('close')
     close.addEventListener('click', () => {
         console.log("hello world")
-        document.getElementById(arr.length).remove();
+        close.parentElement.remove();
     })
     
     const titleContent = document.createElement('h2');
@@ -55,6 +55,7 @@ const createCard = (arr) => {
 
     return card
 }
+
 
 submitFormButton.addEventListener('click', () => {
     //createToDo(document.querySelector("#title").value, document.querySelector('#description').value, document.querySelector('#dueDate').value, document.querySelector('#priority').value, document.querySelector('#checklist').value )
